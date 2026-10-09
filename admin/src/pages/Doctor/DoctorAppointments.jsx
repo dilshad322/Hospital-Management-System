@@ -30,7 +30,8 @@ const DoctorAppointments = () => {
           <p>Fees</p>
           <p>Action</p>
         </div>
-        {appointments.map((item, index) => (
+        {appointments.length > 0 ? (
+        appointments.map((item, index) => (
           <div className='flex flex-wrap justify-between max-sm:gap-5 max-sm:text-base sm:grid grid-cols-[0.5fr_2fr_1fr_1fr_3fr_1fr_1fr] gap-1 items-center text-gray-500 py-3 px-6 border-b hover:bg-gray-50' key={index}>
             <p className='max-sm:hidden'>{index}</p>
             <div className='flex items-center gap-2'>
@@ -54,7 +55,17 @@ const DoctorAppointments = () => {
                 </div>
             }
           </div>
-        ))}
+        ))
+        ) : (
+  <div className='flex flex-col items-center justify-center py-16 px-4 text-center'>
+    <p className='text-base font-medium text-gray-700'>
+      No appointments yet
+    </p>
+    <p className='mt-2 text-sm text-gray-400'>
+      Patient appointments will appear here when they are booked.
+    </p>
+  </div>
+  )}
       </div>
 
     </div>

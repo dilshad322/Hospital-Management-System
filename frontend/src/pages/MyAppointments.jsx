@@ -127,7 +127,32 @@ const MyAppointments = () => {
         <div>
             <p className='pb-3 mt-12 text-lg font-medium text-gray-600 border-b'>My appointments</p>
             <div className=''>
-                {appointments.map((item, index) => (
+                 {appointments.length === 0 ? (
+        <div className='flex flex-col items-center justify-center py-16 text-center'>
+            <img
+                src={assets.appointment_img}
+                alt="No appointments"
+                className='w-40 mb-5 opacity-80'
+            />
+
+            <h2 className='text-xl font-semibold text-gray-700'>
+                No Appointments Found
+            </h2>
+
+            <p className='text-sm text-gray-500 mt-2 max-w-sm'>
+                You haven't booked any appointments yet.
+                Browse our doctors and book your first appointment.
+            </p>
+
+            <button
+                onClick={() => navigate('/doctors')}
+                className='mt-6 px-6 py-3 rounded-full bg-primary text-white hover:opacity-90 transition-all'
+            >
+                Browse Doctors
+            </button>
+        </div>
+    ) : (
+                appointments.map((item, index) => (
                     <div key={index} className='grid grid-cols-[1fr_2fr] gap-4 sm:flex sm:gap-6 py-4 border-b'>
                         <div>
                             <img className='w-36 bg-[#EAEFFF]' src={item.docData.image} alt="" />
@@ -153,7 +178,8 @@ const MyAppointments = () => {
                             {item.cancelled && !item.isCompleted && <button className='sm:min-w-48 py-2 border border-red-500 rounded text-red-500'>Appointment cancelled</button>}
                         </div>
                     </div>
-                ))}
+                ))
+                )}
             </div>
         </div>
     )

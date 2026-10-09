@@ -52,7 +52,8 @@ const DoctorDashboard = () => {
         </div>
 
         <div className='pt-4 border border-t-0'>
-          {dashData.latestAppointments.slice(0, 5).map((item, index) => (
+           {dashData.latestAppointments.length > 0 ? (
+          dashData.latestAppointments.slice(0, 5).map((item, index) => (
             <div className='flex items-center px-6 py-3 gap-3 hover:bg-gray-100' key={index}>
               <img className='rounded-full w-10' src={item.userData.image} alt="" />
               <div className='flex-1 text-sm'>
@@ -69,7 +70,16 @@ const DoctorDashboard = () => {
                   </div>
               }
             </div>
-          ))}
+          ))
+           ) : (
+    <div className='py-10 text-center'>
+      <p className='text-gray-700 font-medium'>No bookings yet</p>
+      <p className='text-sm text-gray-400 mt-1'>
+        New patient bookings will appear here.
+      </p>
+    </div>
+  )}
+          
         </div>
       </div>
 
